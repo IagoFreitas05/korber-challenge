@@ -7,6 +7,8 @@ import com.opencsv.bean.CsvToBeanBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -40,6 +42,10 @@ public class ZoneService {
 
             zoneRepository.saveAll(records);
         }
+    }
+
+    public Page<Zone> index(Pageable pageable){
+      return  this.zoneRepository.findAll(pageable);
     }
 }
 

@@ -1,7 +1,10 @@
 package com.challenge.challenge.controllers;
 
+import com.challenge.challenge.entities.Zone;
 import com.challenge.challenge.services.ZoneService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/zone")
+@RequestMapping("/zones")
 public class ZoneController {
     ZoneService zoneService;
 
@@ -26,5 +29,10 @@ public class ZoneController {
         this.zoneService.saveCSVData();
 
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping()
+    public ResponseEntity<Page<Zone>> index(Pageable pageable){
+        return ResponseEntity.ok(this.zoneService.index(pageable));
     }
 }
