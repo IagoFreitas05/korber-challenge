@@ -18,3 +18,4 @@
 
 ## etapa de codificação
 - Movimentando os arquivos CSV: usei a classe buffered reader para ler o conteudo do arquivo csv, e estou utilizando a lib OPenCSV para serializar meu csv para minha classe de domínio;
+- Para adicionar a documentação via OpenApi do meu projeto, usei a lib: pringdoc-openapi-ui que já me traz um endpoint que gera a documentação: /api-docs, e também uma interface interativa do swagger: / swagger-ui/index.html#/.
