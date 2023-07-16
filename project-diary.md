@@ -1,10 +1,10 @@
 # Diário do projeto e tomada de decisões
 
-## início
+## Início
 - Nome do projeto, sempre opto por começar meus projetos com um nome, pois assim fica mais fácil de visualizar a ferramenta, então optei por "how-is the-trips" por ser uma ferramenta de consulta de viagens.
 - Optei por Utilizar o projeto fornecido por dois motivos: tempo, e diminuir a margem de erro para caso eu importe alguma dependência errada.
 
-## antes de codificar
+## Antes de codificar
 - Após a leitura do caso de uso, fui pesquisar algumas formas de como eu poderia otimizar a importação de arquivos CSV, levando em considerção 2 fatores:
     - o cenário atual, temos uma base de dados pequena, então não precisaria de uma solução muito robusta;
     - em um sistema de produção com certeza criaria uma ferramenta a parte para esse fim, no geral, ferramentas de ETL tendem a consumir bastante processamento,  então pensei em algo embarcado no próprio spring.
@@ -15,6 +15,7 @@
   - 3 - Depois criarei as queries de consulta e a service de consultas para os endpoints da API, e também a controller responsável por conter esses endpoints;
 - Irei realizar um commit quando cada etapa do código feito for considerada concluida, exemplo: criar classes de domínio, criar repositories, criar services, criação de testes, criação de controllers. Os commits terão as seguintes flag: feat -> criação, test -> para testes, refac -> para refatorações, bugfix -> correção de algum bug encontrado.
 
-## etapa de codificação
+## Etapa de codificação
 - Movimentando os arquivos CSV: usei a classe buffered reader para ler o conteudo do arquivo csv, e estou utilizando a lib OPenCSV para serializar meu csv para minha classe de domínio;
 - Para adicionar a documentação via OpenApi do meu projeto, usei a lib: pringdoc-openapi-ui que já me traz um endpoint que gera a documentação: /api-docs, e também uma interface interativa do swagger: / swagger-ui/index.html#/.
+- Criação de um evento para movimentação dos arquivos
