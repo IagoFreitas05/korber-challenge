@@ -9,6 +9,8 @@ import com.opencsv.exceptions.CsvValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,5 +54,13 @@ public class TripService {
             this.tripRepository.save(trip);
             System.out.println(count);
         }
+    }
+
+    public Page<Trip> index(Pageable pageable){
+        return this.tripRepository.findAll(pageable);
+    }
+
+    public Page<Trip> findByType(Pageable pageable, Type type){
+        return this.tripRepository.findByType(type,pageable);
     }
 }

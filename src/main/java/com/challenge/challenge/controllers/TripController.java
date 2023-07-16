@@ -1,15 +1,15 @@
 package com.challenge.challenge.controllers;
 
+import com.challenge.challenge.entities.Trip;
 import com.challenge.challenge.entities.Type;
 import com.challenge.challenge.services.TripService;
 import com.opencsv.exceptions.CsvValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
@@ -34,8 +34,18 @@ public class TripController {
         return ResponseEntity.noContent().build();
     }
 
-   /* @GetMapping()
+    @GetMapping()
     public ResponseEntity<Page<Trip>> index(Pageable pageable){
         return ResponseEntity.ok(this.tripService.index(pageable));
-    }*/
+    }
+
+    @GetMapping("list-yellow")
+    public ResponseEntity<Page<Trip>> getYellowTrips(Pageable pageable){
+        return ResponseEntity.ok(this.tripService.findByType( pageable, Type.YELLOW));
+    }
+
+    @GetMapping("list-green")
+    public ResponseEntity<Page<Trip>> getGreenTrips(Pageable pageable){
+        return ResponseEntity.ok(this.tripService.findByType( pageable, Type.GREEN));
+    }
 }
