@@ -1,5 +1,6 @@
 package com.challenge.challenge.services;
 
+import com.challenge.challenge.dto.TopZonesDTO;
 import com.challenge.challenge.entities.Zone;
 import com.challenge.challenge.repositories.ZoneRepository;
 import com.opencsv.bean.CsvToBean;
@@ -46,6 +47,10 @@ public class ZoneService {
 
     public Page<Zone> index(Pageable pageable){
       return  this.zoneRepository.findAll(pageable);
+    }
+
+    public List<TopZonesDTO> topZones(Pageable pageable, String orderByParam){
+        return this.zoneRepository.findTopZonesWithMostPickUpAndDropOff(pageable, orderByParam);
     }
 }
 
