@@ -3,7 +3,6 @@ package com.challenge.challenge.controllers;
 import com.challenge.challenge.dto.TopZonesDTO;
 import com.challenge.challenge.dto.ZoneTripsDTO;
 import com.challenge.challenge.entities.Zone;
-import com.challenge.challenge.repositories.ZoneRepository;
 import com.challenge.challenge.services.ZoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 
 @RestController

@@ -1,7 +1,5 @@
 package com.challenge.challenge.dto;
 
-import java.util.Date;
-
 public class ZoneTripsDTO {
     public ZoneTripsDTO(String zone, Long pickUp, Long dropOff, String date) {
         this.zone = zone;
