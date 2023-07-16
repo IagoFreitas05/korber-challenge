@@ -13,7 +13,6 @@
   - 1 - Irei começar definindo as classes de entidade do meu sistema, e seus relacionamentos;
   - 2 - Depois irei construir a service que busca os arquivos em um diretório e realiza a persistência na base de dados (irei verificar se existe uma lentidão se caso necessário aplico uma outra abordagem para melhoria de perfomance);
   - 3 - Depois criarei as queries de consulta e a service de consultas para os endpoints da API, e também a controller responsável por conter esses endpoints;
-  - 4 - Depois da  etapa anterior feita e testada, será o momento de implementar a controller que irá realizar a atualização da base via UPLOAD dos arquivos.
 - Irei realizar um commit quando cada etapa do código feito for considerada concluida, exemplo: criar classes de domínio, criar repositories, criar services, criação de testes, criação de controllers. Os commits terão as seguintes flag: feat -> criação, test -> para testes, refac -> para refatorações, bugfix -> correção de algum bug encontrado.
 
 ## etapa de codificação

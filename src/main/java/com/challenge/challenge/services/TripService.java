@@ -52,8 +52,9 @@ public class TripService {
             trip.setDropOffDatetime(String.valueOf(nextLine[2]));
             trip.setDropOffId(Long.valueOf(nextLine[4]));
             this.tripRepository.save(trip);
-            System.out.println(count);
+            System.out.println("lendo linha: " + count);
         }
+        System.out.println("Arquivo de corridas "+type+" finalizado");
     }
 
     public Page<Trip> index(Pageable pageable){

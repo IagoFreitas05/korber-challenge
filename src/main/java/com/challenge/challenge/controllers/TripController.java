@@ -2,6 +2,7 @@ package com.challenge.challenge.controllers;
 
 import com.challenge.challenge.entities.Trip;
 import com.challenge.challenge.entities.Type;
+import com.challenge.challenge.events.MoveFileEventPublisher;
 import com.challenge.challenge.services.TripService;
 import com.opencsv.exceptions.CsvValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,20 +18,22 @@ import java.io.IOException;
 @RequestMapping("/trips")
 public class TripController {
     TripService tripService;
+    MoveFileEventPublisher moveFileEventPublisher;
     @Autowired
-    public TripController(TripService tripService){
+    public TripController(TripService tripService, MoveFileEventPublisher moveFileEventPublisher){
         this.tripService = tripService;
+        this.moveFileEventPublisher = moveFileEventPublisher;
     }
 
     @PostMapping("/move/yellow")
     public ResponseEntity<HttpStatus> moveYellow() throws IOException, CsvValidationException {
-        this.tripService.saveCSVData(Type.YELLOW);
+      this.moveFileEventPublisher.publishCustomEvent(Type.YELLOW);
         return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/move/green")
     public ResponseEntity<HttpStatus> moveGreen() throws IOException, CsvValidationException {
-        this.tripService.saveCSVData(Type.GREEN);
+        this.moveFileEventPublisher.publishCustomEvent(Type.GREEN);
         return ResponseEntity.noContent().build();
     }
 
