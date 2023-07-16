@@ -1,6 +1,7 @@
 package com.challenge.challenge.controllers;
 
 import com.challenge.challenge.dto.TopZonesDTO;
+import com.challenge.challenge.dto.ZoneTripsDTO;
 import com.challenge.challenge.entities.Zone;
 import com.challenge.challenge.repositories.ZoneRepository;
 import com.challenge.challenge.services.ZoneService;
@@ -13,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -41,5 +43,12 @@ public class ZoneController {
     public ResponseEntity<List<TopZonesDTO>> topZones( @RequestParam(value = "orderBy", defaultValue = "pickup") String orderByParam){
         Pageable pageable = PageRequest.of(0, 5);
         return  ResponseEntity.ok(this.zoneService.topZones(pageable, orderByParam));
+    }
+
+    @GetMapping("/zone-trips")
+    public ResponseEntity<ZoneTripsDTO> zoneTrips(
+            @RequestParam(value = "locationId", defaultValue = "") Long locationId,
+            @RequestParam(value = "date", defaultValue = "") String date){
+        return ResponseEntity.ok(this.zoneService.zoneTripsDTOS(locationId, date));
     }
 }

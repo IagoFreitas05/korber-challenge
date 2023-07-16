@@ -1,6 +1,7 @@
 package com.challenge.challenge.services;
 
 import com.challenge.challenge.dto.TopZonesDTO;
+import com.challenge.challenge.dto.ZoneTripsDTO;
 import com.challenge.challenge.entities.Zone;
 import com.challenge.challenge.repositories.ZoneRepository;
 import com.opencsv.bean.CsvToBean;
@@ -16,6 +17,7 @@ import javax.annotation.PostConstruct;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -51,6 +53,10 @@ public class ZoneService {
 
     public List<TopZonesDTO> topZones(Pageable pageable, String orderByParam){
         return this.zoneRepository.findTopZonesWithMostPickUpAndDropOff(pageable, orderByParam);
+    }
+
+    public ZoneTripsDTO zoneTripsDTOS(Long locationId, String  date){
+        return this.zoneRepository.findZoneTripsDTO(locationId, date);
     }
 }
 
